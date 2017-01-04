@@ -19,6 +19,8 @@ articleView.populateFilters = function() {
 articleView.handleAuthorFilter = function() {
   $('#author-filter').on('change', function() {
     if ($(this).val()) {
+      $('#articles').hide();
+      $('.byline address a ').fadeIn('slow');
       /* TODO: If the select box changes to an option that has a value, we should:
           1. Hide all of the articles
           2. Fade in only the articles that match based on on the author
@@ -26,6 +28,7 @@ articleView.handleAuthorFilter = function() {
             those articles that match the value, and then fade them in.
         */
     } else {
+      $('#articles').not('template').show();
     /* Otherwise, we should:
         1. Show all the articles except the template */
     }
@@ -62,5 +65,5 @@ articleView.setTeasers = function() {
     // STRETCH GOAl!: change the 'Read On' link to 'Show Less'
   */
 };
-
+articleView.handleAuthorFilter();
 // TODO: Invoke all of the above functions (I mean, methods!):
